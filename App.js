@@ -1,14 +1,17 @@
 import React from 'react';
 import { StyleSheet, Text, View } from 'react-native';
+import { Contacts } from 'expo';
+import PhoneNumber from './components/PhoneNumber';
 
 export default class App extends React.Component {
+ 
   render() {
     return (
       <View style={styles.container}>
       <View style={styles.header}>
       </View>
         <View style={styles.contactOne}>
-        <Text style={styles.white}>Contact</Text>
+        <PhoneNumber />
         </View>
         <View style={styles.contactTwo}>
         <Text style={styles.white}>Contact</Text>
@@ -41,16 +44,19 @@ const styles = StyleSheet.create({
   },
   contactOne: {
     flex: 3,
+    justifyContent: 'space-around',
     alignItems: 'center',
     backgroundColor: 'orange', 
   },
   contactTwo: {
     flex: 3,
+    justifyContent: 'space-around',
     alignItems: 'center',
     backgroundColor: 'green', 
   },
   contactThree: {
     flex: 3,
+    justifyContent: 'space-around',
     alignItems: 'center',
     backgroundColor: 'blue', 
   },

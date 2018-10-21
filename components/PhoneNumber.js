@@ -1,6 +1,6 @@
 import React from 'react';
 import { Text, View, StyleSheet, Button } from 'react-native';
-import { Contacts } from 'expo';
+import { Contacts, SMS } from 'expo';
 
 export default class PhoneNumber extends React.Component {
     constructor(props) {
@@ -15,7 +15,7 @@ export default class PhoneNumber extends React.Component {
         if (data) {
           return data.map(a => {
            const phone = a.phoneNumbers;
-           if (a.name == "Roman") {
+           if (a.name == "L") {
             return phone.map(phoneNum => {
                 this.setState({phoneNum})
                    console.log(phoneNum.digits); 
@@ -29,13 +29,15 @@ export default class PhoneNumber extends React.Component {
    
   render() {
     let phoneNum = this.state.phoneNum
-      
+      let recip = phoneNum.digits
       return (
         <View>
         <Button 
-        style={styles.white}
-        title='call'
-        onPress={() => alert(phoneNum.digits)}></Button>
+        color= 'white'
+        title='text'
+        onPress={
+            () => {const { result } =  Expo.SMS.sendSMSAsync(recip, 'I need a ride');
+        }}></Button>
         </View>  
       );
   }

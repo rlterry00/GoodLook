@@ -3,10 +3,10 @@ import { Text, View, StyleSheet } from 'react-native';
 import { Contacts } from 'expo';
 
 export default class PhoneNumber extends React.Component {
-    // constructor(props) {
-    //     super(props);
-    //     this.state = {phoneNum: phoneNum};
-    // }
+    constructor(props) {
+        super(props);
+        this.state = {phoneNum: []};
+    }
     async  componentDidMount() {  
         const { data } = await Contacts.getContactsAsync({
           
@@ -16,9 +16,9 @@ export default class PhoneNumber extends React.Component {
           return data.map(a => {
            const phone = a.phoneNumbers;
            if (a.name == "Roman") {
-            return phone.map(b => {
-                let phoneNum = b.digits;
-                   console.log(phoneNum); 
+            return phone.map(phoneNum => {
+                this.setState({phoneNum})
+                   console.log(phoneNum.digits); 
              });
            }
         
@@ -28,11 +28,11 @@ export default class PhoneNumber extends React.Component {
         }
    
   render() {
-   
+    let phoneNum = this.state.phoneNum
       
       return (
         <View>
-        <Text style={styles.white}></Text>
+        <Text style={styles.white}>{phoneNum.digits}</Text>
         </View>  
       );
   }

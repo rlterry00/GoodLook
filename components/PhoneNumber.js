@@ -1,5 +1,5 @@
 import React from 'react';
-import { Text, View, StyleSheet } from 'react-native';
+import { Text, View, StyleSheet, Button } from 'react-native';
 import { Contacts } from 'expo';
 
 export default class PhoneNumber extends React.Component {
@@ -32,7 +32,10 @@ export default class PhoneNumber extends React.Component {
       
       return (
         <View>
-        <Text style={styles.white}>{phoneNum.digits}</Text>
+        <Button 
+        style={styles.white}
+        title='call'
+        onPress={() => alert(phoneNum.digits)}></Button>
         </View>  
       );
   }

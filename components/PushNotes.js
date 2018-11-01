@@ -9,6 +9,7 @@ import {
 } from 'react-native';
 import { Permissions, Notifications } from 'expo';
 import * as firebase from 'firebase';
+import axios from 'axios';
 
 const config = {
   apiKey: "AIzaSyAVsIxcYz_sUe_3qBib9zmNms1lzDDw9zk",
@@ -60,14 +61,31 @@ registerForPushNotificationsAsync = async () => {
   // Get the token that uniquely identifies this device
   let token = await Notifications.getExpoPushTokenAsync();
   console.log(token);
-  function tokenPush(PhoneNumber, PushToken) {
-    firebase.database().ref('User/').push().set({
-      PhoneNumber: '5403550033',
-      PushToken: token
-    });
+  // function tokenPush(PhoneNumber, PushToken) {
+  //   firebase.database().ref('User/').push().set({
+  //     PhoneNumber: '5403550033',
+  //     PushToken: token
+  //   });
     
-  }
-  tokenPush();
+  // }
+  // tokenPush();
+
+  let config = {
+    headers: {
+      'accept': 'application/json',
+      'accept-encoding': 'gzip, deflate',
+      'content-type': 'application/json'
+    }
+  };
+  axios.post('https://exp.host/--/api/v2/push/send', 
+  { 
+  to: token,
+  title:"hello",
+  body: "world" 
+  },config).then(function(response){
+    console.log(response)
+  });  
+
 }
 
 

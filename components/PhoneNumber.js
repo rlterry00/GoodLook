@@ -7,6 +7,7 @@ export default class PhoneNumber extends React.Component {
         super(props);
         this.state = {phoneNum: []};
     }
+    
     async  componentDidMount() {  
         const { data } = await Contacts.getContactsAsync({
           

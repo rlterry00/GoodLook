@@ -1,26 +1,22 @@
 import React from 'react';
-import { StyleSheet, Text, View } from 'react-native';
-import { Contacts } from 'expo';
+import {
+  StyleSheet,
+  TextInput,
+  TouchableOpacity,
+  Text,
+  KeyboardAvoidingView,
+  View,
+} from 'react-native';
+import { Permissions, Notifications } from 'expo';
 import PhoneNumber from './components/PhoneNumber';
+import  PushNotes  from "./components/PushNotes";
 
 export default class App extends React.Component {
  
   render() {
     return (
       <View style={styles.container}>
-      <View style={styles.header}>
-      </View>
-        <View style={styles.contactOne}>
-        <PhoneNumber />
-        </View>
-        <View style={styles.contactTwo}>
-        <Text style={styles.white}>Contact</Text>
-        </View>
-        <View style={styles.contactThree}>
-        <Text style={styles.white}>Contact</Text>
-        </View>
-        <View style={styles.footer}>
-        </View>
+    <PushNotes />
       </View>
     );
   }

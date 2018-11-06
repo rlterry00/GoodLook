@@ -61,9 +61,11 @@ registerForPushNotificationsAsync = async () => {
   // Get the token that uniquely identifies this device
   let token = await Notifications.getExpoPushTokenAsync();
   console.log(token);
+  let monToken = 'ExponentPushToken[uOH2unOZ4GJEbkG-btmgTd]';
+  let ipadToken = 'ExponentPushToken[u_0QQ8PHIcw2b1b9-WiOtT]';
   // function tokenPush(PhoneNumber, PushToken) {
   //   firebase.database().ref('User/').push().set({
-  //     PhoneNumber: '5403550033',
+  //     PhoneNumber: 'ipad',
   //     PushToken: token
   //   });
     
@@ -77,15 +79,19 @@ registerForPushNotificationsAsync = async () => {
       'content-type': 'application/json'
     }
   };
+  setTimeout(() => {
   axios.post('https://exp.host/--/api/v2/push/send', 
   { 
-  to: token,
-  title:"hello",
-  body: "world" 
+  to: monToken,
+  title:"Good LookOut Request from Ramon",
+  body: "Could you call and act like you need a ride?",
+  priority: "high",
+  sound: "default"
   },config).then(function(response){
     console.log(response)
   });  
 
+}, 60000);
 }
 
 
